@@ -1,0 +1,135 @@
+    1  yum install -y https://yum.centreon.com/standard/21.10/el7/stable/noarch/RPMS/centreon-release-21.10-2.el7.centos.noarch.rpm
+    2  export http_proxy=http://proxy.int.centreon.com:3128
+    3  export https_proxy=http://proxy.int.centreon.com:3128
+    4  vim /etc/yum.conf 
+    5  yum install -y https://yum.centreon.com/standard/21.10/el7/stable/noarch/RPMS/centreon-release-21.10-2.el7.centos.noarch.rpm
+    6  yum install -y yum-utils
+    7  yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    8  yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    9  yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   10  yum-config-manager --enable remi-php80
+   11  systemctl stop cbd
+   12  rm /var/lib/centreon-broker/* -f
+   13  yum clean all --enablerepo=*
+   14  yum update centreon\*
+   15  vim /etc/yum.repos.d/centreon.repo 
+   16  yum clean all --enablerepo=*
+   17  yum update centreon\*
+   18  systemctl stop rh-php73-php-fpm
+   19  systemctl disable rh-php73-php-fpm
+   20  systemctl enable php-fpm
+   21  systemctl start php-fpm
+   22  systemctl reload httpd24-httpd
+   23  ip a
+   24  echo "date.timezone = Europe/Paris" >> /etc/php.d/50-centreon.ini
+   25  systemctl restart php-fpm
+   26  systemctl restart cbd centengine centreontrapd gorgoned
+   27  rpm -qa | grep php
+   28  rpm -qa | grep php73
+   29  yum remove rh-php73-php-mysqlnd rh-php73-php-xml rh-php73-php-cli rh-php73-php-json rh-php73-php-mbstring rh-php73-php-pear rh-php73-php-pdo rh-php73-php-snmp rh-php73-php-pecl-gnupg rh-php73-ioncube-loader rh-php73-php-zip rh-php73-php-ldap rh-php73-php-gd rh-php73-runtime rh-php73-php-fpm rh-php73-php-common rh-php73-php-process rh-php73 rh-php73-php-intl
+   30  updatedb
+   31  locate php73
+   32  rm -Rf /etc/opt/rh/rh-php73
+   33  rpm -qa | grep remi
+   34  ls /etc/yum.repos.d/
+   35  yum-config-manager --enable remi-php73
+   36  yum-config-manager --enable remi-php72
+   37  yum-config-manager --enable remi-php74
+   38  yum-config-manager --enable remi-php71
+   39  yum-config-manager --enable remi-php70
+   40  updatedb
+   41  locate php73
+   42  yum clean all
+   43  locate php73
+   44  updatedb
+   45  locate php73
+   46  vim /etc/yum.repos.d/remi-php73.repo
+   47  rm -Rf /var/opt/rh/rh-php73
+   48  updatedb
+   49  locate php73
+   50  vim /etc/yum.repos.d/remi-php73.repo
+   51  vim /etc/yum.repos.d/remi-php72.repo
+   52  vim /etc/yum.repos.d/remi-php71.repo
+   53  vim /etc/yum.repos.d/remi-php70.repo
+   54  mail
+   55  tailf /var/log/centreon-engine/centengine.log
+   56  /bin/php --version
+   57  locate 50-centreon.ini
+   58  vim /etc/php.d/50-centreon.ini
+   59  systemctl restart php-fpm
+   60  timedatectl set-timezone Europe/London
+   61  /bin/php /usr/share/centreon/cron/centreon-partitioning.php
+   62  /bin/php /usr/share/centreon/cron/centstorage_purge.php
+   63  yum update
+   64  hostname -I | cut -f1 -d' '
+   65  package-cleanup --oldkernels --count=1
+   66  rpm -qa | grep kernel
+   67  mkdir /srv/centreon
+   68  /srv/centreon/generateUUID.php
+   69  vim /srv/centreon/generateUUID.php
+   70  vim /srv/centreon/generateAppKey.php
+   71  vim /srv/centreon/updatePlatformTopology.php
+   72  vim /tmp/clean_server.sh
+   73  rm -f /etc/profile.d/centreon.sh
+   74  vim /etc/profile.d/centreon.sh
+   75  bash /tmp/clean_server.sh
+   76 
+   84  ip add  
+   
+   89  yem install net-snmp net-snmpd-utils
+   90  yum install net-snmp net-snmpd-utils
+   91  ping google.fr
+   92  yum install net-snmp net-snmpd-utils
+   93  cd /usr/lib/centreon/plugings
+   94  cd /usr/lib/centreon/plugins
+   95  ./windows_snmp.pl --plugin=os::snmp::--mode=cpu -hostname=192.168.83.1 -- snmp-version=1 --snmp-community=public --warning=80 -critical=90
+   96  nano /etc/snmp
+   97  ls
+   98  reboot
+   99  ./windows_snmp.pl --plugin=os::snmp::--mode=cpu -hostname=192.168.83.1 -- snmp-version=1 --snmp-community=public --warning=80 -critical=90
+  100  ip add
+  101  su -centreon-engine
+  102  su -centreon-engine /usr/libentreon/plugins/centreon_windows_snmp.pl\ --plugin=os::windows:snmp::pluging\ --list-mode
+  103   /usr/libentreon/plugins/centreon_windows_snmp.pl\ --plugin=os::windows:snmp::pluging\ --list-mode
+  104  yum install centreon-plugin-Operatingsystems-Windows-Snmp
+  105  yum install centreon-plugin-Operatingsystems-Windos-Snmp
+  106  yum install centreon-plugin-Operatingsystems-Linux-Snmp
+ 
+  
+  123  yum install centreon-plugin-Operatingsystems-Windos-Snmp
+  124 
+  125  yum install centreon-plugin-Operatingsystems-Windos-Snmp
+  126  ./windows_snmp.pl --plugin=os::snmp::--mode=cpu -hostname=192.168.83.1 -- snmp-version=1 --snmp-community=public --warning=80 -critical=90
+  127  ./windows_snmp.pl --plugin=os::snmp::--mode=cpu -hostname=192.168.83.143 -- snmp-version=1 --snmp-community=public --warning=80 -critical=90
+  128  ./windows_snmp.pl --plugin=os::snmp::--mode=cpu -hostname=192.168.83.144 -- snmp-version=1 --snmp-community=public --warning=80 -critical=90
+  129   /usr/libentreon/plugins/centreon_windows_snmp.pl\ --plugin=os::windows:snmp::pluging\ --list-mode
+  130  nano /etc/snmp/snmpd
+  131  nano /etc/snmp/snmpd.conf
+  132 
+  139  rm -f /etc/profile.d/centreon.sh
+  140  vim /etc/profile.d/centreon.sh
+  141  yum install -y https://yum.centreon.com/standard/21.10/el7/stable/noarch/RPMS/centreon-release-21.10-2.el7.centos.noarch.rpm
+  142  shutdown
+ lp
+  171  /usr/lib/centreon/plugins/centreon_windows_snmp.pl \ -- plugin=os::windows::snmp::plugin \ -- mode="service" \ --help
+  172  centreon engine
+  173  shutdown
+  174  ls
+  175  dir
+  176  ip add
+  177  /usr/lib/centreon/plugins/centreon_windows_snmp.pl \ -- plugin=os::windows::snmp::plugin \ "-- mode"=service \ --help
+  178  /usr/lib/centreon/plugins/centreon_windows_snmp.pl \ -- plugin=os::windows::snmp::plugin \ "-- mode"=service
+  179  /usr/lib/centreon/plugins/centreon_windows_snmp.pl \ -- plugin=os::windows::snmp::plugin \ "-- mode"=
+  180  /usr/lib/centreon/plugins/centreo_windows_snmp.pl--pl plugin=os::windows::snmp::plugin list-mode
+  181  ./windows_snmp.pl --plugin=os::snmp::--mode=cpu -hostname=192.168.83.1 -- snmp-version=1 --snmp-community=public --warning=80 -critical=90
+  182  ./windows_snmp.pl --plugin=os::snmp::--mode=cpu -hostname=192.168.83.1 -- snmp-version=1 -- ./windows_snmp.pl --plugin=os::snmp::--mode=cpu -hostname=192.168.83.1 -- snmp-version=1 --snmp-community=public --warning=80 -critical=90snmp-community=public --warning=80 -critical=90
+  183  ./windows_snmp.pl --plugin=os::snmp::--mode=cpu -hostname=192.168.83.143 -- snmp-version=1 --snmp-community=public --warning=80 -critical=90
+  184   /usr/libentreon/plugins/centreon_windows_snmp.pl\ --plugin=os::windows:snmp::pluging\ --list-mode
+  185  cd /usr/lib/centreon/plugins
+  186  ip add
+  187  ipadd
+  188  ip add
+  189  shotdown
+  190  shutdown
+  191  history
+  192  history > history.txt

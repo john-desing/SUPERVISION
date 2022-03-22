@@ -1,0 +1,5 @@
+{
+    "centreonBroker": {
+        "log": "/var/log/centreon-broker/watchdog.log"
+    }
+}
